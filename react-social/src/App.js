@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
+import Dialogs from './components/Dialogs/Dialogs';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
           <Navbar />
         </Col>
         <Col sm={8} className='bg-light'>
-          <Profile />
+          {/* <Profile /> */}
+          <Dialogs />
         </Col>
       </Row>
     </Container>

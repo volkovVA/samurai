@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './MyPosts.module.css';
+// import classes from './MyPosts.module.css';
 
 import Post from './Post/Post';
 
@@ -13,8 +13,8 @@ const MyPosts = () => {
         <button>Remove post</button>
       </div>
       <ul>
-        <Post />
-        <Post />
+        <Post message="Hi, how are you?" likesCount="15" />
+        <Post message="It's my first post" likesCount="10" />
       </ul>
     </div>
   )
