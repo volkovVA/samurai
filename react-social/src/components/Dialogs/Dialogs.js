@@ -10,25 +10,40 @@ const PersonItem = ({name, id}) => {
   )
 }
 
-const MessagesItem = ({message}) => {
+const MessageItem = ({message}) => {
   return (
     <li className="messagesItem">{message}</li>
   )
 }
 
 const Dialogs = () => {
+
+  const peopleData = [
+    {id: 1, name: 'Slava'},
+    {id: 2, name: 'Elena'},
+    {id: 3, name: 'Bred'},
+    {id: 4, name: 'Angelina'},
+  ]
+
+  const messagesData = [
+    {id: 1, message: 'Hello! How are you?'},
+    {id: 2, message: 'Hi! I\'m fine. Thanks. And you?'},
+    {id: 3, message: 'I\'m OK'}
+  ]
+
+  const peopleElements = peopleData
+    .map(person => <PersonItem name={person.name} id={person.id} />)
+
+  const messagesElements = messagesData
+    .map(message => <MessageItem message={message.message} />)
+
   return (
     <div className={classes.dialogs}>
       <ul className="personList">
-        <PersonItem name="Slava" id="1" />
-        <PersonItem name="Elena" id="2" />
-        <PersonItem name="Bred" id="3" />
-        <PersonItem name="Angelina" id="4" />
+        {peopleElements}
       </ul>
       <ul className="messagesList">
-        <MessagesItem message="Hello! How are you?" />
-        <MessagesItem message="Hi! I'm fine. Thanks. And you?" />
-        <MessagesItem message="I'm OK" />
+        {messagesElements}
       </ul>
     </div>
   )
