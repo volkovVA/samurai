@@ -1,0 +1,7 @@
+.dialogs {
+  display: flex;
+}
+
+.personItem.active a {
+  color: red;
+}
