@@ -6,12 +6,12 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPosts from './MyPosts/MyPosts';
 
 
-const Profile = () => {
+const Profile = ({state}) => {
   return (
     <Row>
       <Col>
         <ProfileInfo />
-        <MyPosts />
+        <MyPosts posts={state.posts} />
       </Col>
     </Row>
   )

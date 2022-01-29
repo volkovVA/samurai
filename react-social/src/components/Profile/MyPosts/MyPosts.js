@@ -3,14 +3,9 @@ import React from "react";
 
 import Post from './Post/Post';
 
-const MyPosts = () => {
-
-  const postData = [
-    {id: 1, message: 'Hello! How are you?', likesCount: 12},
-    {id: 2, message: 'It\'s my first post', likesCount: 15}
-  ]
-
-  const postsElements = postData
+const MyPosts = ({posts}) => {
+  
+  const postsElements = posts
     .map(post => <Post message={post.message} likesCount={post.likesCount} />)
 
   return (

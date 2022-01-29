@@ -1,40 +1,15 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
 import classes from './Dialogs.module.css';
 
-const PersonItem = ({name, id}) => {
-  return (
-    <li className={`${classes.personItem} ${classes.active}`}>
-      <NavLink to={`/dialogs/${id}`}>{name}</NavLink>
-    </li>
-  )
-}
+import PersonItem from "./PersonItem/PersonItem";
+import MessageItem from "./MessageItem/MessageItem";
 
-const MessageItem = ({message}) => {
-  return (
-    <li className="messagesItem">{message}</li>
-  )
-}
+const Dialogs = ({people, messages}) => {
 
-const Dialogs = () => {
-
-  const peopleData = [
-    {id: 1, name: 'Slava'},
-    {id: 2, name: 'Elena'},
-    {id: 3, name: 'Bred'},
-    {id: 4, name: 'Angelina'},
-  ]
-
-  const messagesData = [
-    {id: 1, message: 'Hello! How are you?'},
-    {id: 2, message: 'Hi! I\'m fine. Thanks. And you?'},
-    {id: 3, message: 'I\'m OK'}
-  ]
-
-  const peopleElements = peopleData
+  const peopleElements = people
     .map(person => <PersonItem name={person.name} id={person.id} />)
 
-  const messagesElements = messagesData
+  const messagesElements = messages
     .map(message => <MessageItem message={message.message} />)
 
   return (
