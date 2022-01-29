@@ -1,0 +1,7 @@
+.navbar li a {
+  color: green;
+}
+
+.navbar li a.active {
+  color: gold;
+}

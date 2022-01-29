@@ -1,16 +1,16 @@
 import React from "react";
-import { Nav } from 'react-bootstrap';
-// import classes from './Navbar.module.css';
+import { NavLink } from 'react-router-dom';
+import classes from './Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <Nav defaultActiveKey="#p" className="flex-column">
-      <Nav.Link href="profile">Profile</Nav.Link>
-      <Nav.Link eventKey="messages">Messages</Nav.Link>
-      <Nav.Link eventKey="news">News</Nav.Link>
-      <Nav.Link eventKey="music">Music</Nav.Link>
-      <Nav.Link eventKey="settings">Settings</Nav.Link>
-    </Nav>
+    <ul className={`${classes.navbar} flex-column`}>
+      <li><NavLink to="profile" activeClassName={classes.active}>Profile</NavLink></li>
+      <li><NavLink to="dialogs" activeClassName={classes.active}>Dialogs</NavLink></li>
+      <li><NavLink to="news" activeClassName={classes.active}>News</NavLink></li>
+      <li><NavLink to="music" activeClassName={classes.active}>Music</NavLink></li>
+      <li><NavLink to="settings" activeClassName={classes.active}>Settings</NavLink></li>
+    </ul>
   )
 }
 
