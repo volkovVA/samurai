@@ -3,21 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import state, {subscribe} from './redux/state';
-import {addPost, updateNewPostText} from './redux/state';
+import store from './redux/state';
 
 const renderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <App 
         {...state} 
-        addPost={addPost} 
-        updateNewPostText={updateNewPostText} />
+        addPost={store.addPost.bind(store)} 
+        updateNewPostText={store.updateNewPostText.bind(store)} />
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
