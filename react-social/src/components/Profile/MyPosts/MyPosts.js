@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import { addPostActionCreater, updateNewPostTextActionCreater } from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
-  
+
   const postsElements = props.posts
     .map(post => <Post message={post.message} likesCount={post.likesCount} />)
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import store from './redux/state';
+import store from './redux/redux-store';
 
 const renderEntireTree = (state) => {
   ReactDOM.render(
@@ -19,4 +19,7 @@ const renderEntireTree = (state) => {
 
 renderEntireTree(store.getState());
 
-store.subscribe(renderEntireTree);
+store.subscribe(() => {
+  const state = store.getState();
+  renderEntireTree(state);
+});
