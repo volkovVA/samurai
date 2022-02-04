@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 const store = {
   _state: {
@@ -21,7 +23,8 @@ const store = {
         {id: 1, message: 'Hello! How are you?'},
         {id: 2, message: 'Hi! I\'m fine. Thanks. And you?'},
         {id: 3, message: 'I\'m OK'}
-      ]
+      ],
+      newMessageText: ''
     }
   },
   _callSubscriber() {
@@ -55,6 +58,14 @@ const store = {
       this._addPost();
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._updateNewPostText(action.newText);
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      const body = this._state.dialogsPage.newMessageText;
+      this._state.dialogsPage.newMessageText = '';
+      this._state.dialogsPage.messages.push({id: 6, message: body});
+      this._callSubscriber(this._state);
     }
   }
 }
@@ -68,6 +79,19 @@ export const addPostActionCreater = () => {
 export const updateNewPostTextActionCreater = (text) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
+    newText: text 
+  }
+}
+
+export const sendMessageActionCreater = () => {
+  return {
+    type: SEND_MESSAGE
+  }
+}
+
+export const updateNewMessageTextActionCreater = (text) => {
+  return {
+    type: UPDATE_NEW_MESSAGE_TEXT,
     newText: text 
   }
 }
