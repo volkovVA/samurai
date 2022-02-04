@@ -3,20 +3,23 @@ import React from "react";
 
 import Post from './Post/Post';
 
-const MyPosts = ({posts, addPost, newPostText, updateNewPostText}) => {
+const MyPosts = (props) => {
   
-  const postsElements = posts
+  const postsElements = props.posts
     .map(post => <Post message={post.message} likesCount={post.likesCount} />)
 
     const newPostElement = React.createRef();
 
     const handlerAddPost = () => {
-      addPost();
+      props.dispatch({ type: 'ADD-POST'});
     }
 
     const handlerPostChange = () => {
       const text = newPostElement.current.value;
-      updateNewPostText(text);
+      props.dispatch({ 
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: text 
+      });
     }
 
   return (
@@ -29,7 +32,7 @@ const MyPosts = ({posts, addPost, newPostText, updateNewPostText}) => {
           cols="30" 
           rows="3"
           ref={newPostElement}
-          value={newPostText}
+          value={props.newPostText}
           onChange={handlerPostChange}
         />
         <button onClick={ handlerAddPost }>Add post</button>

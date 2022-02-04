@@ -11,7 +11,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
-const App = ({profilePage, dialogsPage, addPost, updateNewPostText}) => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <Container>
@@ -26,10 +26,9 @@ const App = ({profilePage, dialogsPage, addPost, updateNewPostText}) => {
           </Col>
           <Col sm={8} className='bg-warning'>
             <Route path='/profile' render={() => <Profile
-              {...profilePage} 
-              addPost={addPost} 
-              updateNewPostText={updateNewPostText} />} />
-            <Route path='/dialogs' render={() => <Dialogs {...dialogsPage} />} />
+              {...props.profilePage} 
+              dispatch={props.dispatch} />} />
+            <Route path='/dialogs' render={() => <Dialogs {...props.dialogsPage} />} />
             <Route path='/news' component={News} />
             <Route path='/music' component={Music} />
             <Route path='/settings' component={Settings} />
