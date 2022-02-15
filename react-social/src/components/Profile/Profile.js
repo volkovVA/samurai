@@ -1,9 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-// import classes from './Profile.module.css';
-
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
 const Profile = (props) => {
@@ -11,7 +9,7 @@ const Profile = (props) => {
     <Row>
       <Col>
         <ProfileInfo />
-        <MyPosts {...props} />
+        <MyPostsContainer store={props.store} />
       </Col>
     </Row>
   )
