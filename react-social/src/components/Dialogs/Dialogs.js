@@ -7,10 +7,10 @@ const Dialogs = (props) => {
   const state = props.dialogsPage;
 
   const peopleElements = state.people
-    .map(person => <PersonItem name={person.name} id={person.id} />)
+    .map(person => <PersonItem name={person.name} id={person.id} key={person.id} />)
 
   const messagesElements = state.messages
-    .map(message => <MessageItem message={message.message} />)
+    .map(message => <MessageItem message={message.message} key={message.id} />)
 
   const handlerMessageClick = () => {
     props.sendMessage();

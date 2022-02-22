@@ -6,19 +6,11 @@ import './index.css';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
 
-const renderEntireTree = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-}
-
-renderEntireTree();
-
-store.subscribe(() => {
-  renderEntireTree();
-});
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
