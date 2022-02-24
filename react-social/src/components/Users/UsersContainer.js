@@ -3,12 +3,12 @@ import * as axios from 'axios';
 import Users from "./Users";
 import { connect } from "react-redux";
 import {
-  followActionCreater,
-  setUsersActionCreater,
-  unfollowActionCreater,
-  setCurrentPageActionCreater,
-  setTotalUsersCountActionCreater,
-  toggleIsFetchingActionCreater
+  follow,
+  setUsers,
+  unfollow,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFetching
 } from "../../redux/users-reducer";
 import FadeLoader from 'react-spinners/FadeLoader';
 // import preloader from '../../assets/preloader.gif'
@@ -72,27 +72,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => {
-      dispatch(followActionCreater(userId))
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowActionCreater(userId))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersActionCreater(users))
-    },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageActionCreater(pageNumber))
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountActionCreater(totalCount))
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingActionCreater(isFetching))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsFetching
+  })(UsersContainer);
