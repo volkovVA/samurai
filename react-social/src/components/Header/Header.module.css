@@ -6,3 +6,11 @@
 .header a {
   margin-right: 1rem;
 }
+
+.loginBlock {
+  margin-left: auto;
+}
+
+.loginBlock a{
+  color: white;
+}

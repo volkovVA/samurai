@@ -3,7 +3,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import './App.css';
 
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -18,7 +18,7 @@ const App = (props) => {
       <Container>
         <Row className='bg-primary'>
           <Col>
-            <Header />
+            <HeaderContainer />
           </Col>
         </Row>
         <Row>
