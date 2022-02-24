@@ -3,16 +3,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const initialState = {
-  users: [
-    // {id: 1, photoUrl: 'https://media.baamboozle.com/uploads/images/58350/1593220552_125612', followed: false, fullName: 'Dmitry', status: 'I am Developer', location: {city: 'Moscow', country: 'Russia'} },
-    // {id: 2, photoUrl: 'https://media.baamboozle.com/uploads/images/58350/1593220552_125612', followed: true, fullName: 'Elena', status: 'I am Recruter', location: {city: 'St.Petersburg', country: 'Russia'} },
-    // {id: 3, photoUrl: 'https://media.baamboozle.com/uploads/images/58350/1593220552_125612', followed: false, fullName: 'Alex', status: 'I am CEO', location: {city: 'Minsk', country: 'Belarus'} }
-  ],
+  users: [],
   pageSize: 5,
   totalUsersCount: 0,
-  currentPage: 1
+  currentPage: 1,
+  isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -47,6 +45,9 @@ const usersReducer = (state = initialState, action) => {
 
     case SET_TOTAL_USERS_COUNT:
       return { ...state, totalUsersCount: action.count };
+
+    case TOGGLE_IS_FETCHING:
+      return { ...state, isFetching: action.isFetching };
 
     default: 
       return state;
@@ -85,6 +86,13 @@ export const setTotalUsersCountActionCreater = (totalUsersCount) => {
   return {
     type: SET_TOTAL_USERS_COUNT,
     count: totalUsersCount
+  }
+}
+
+export const toggleIsFetchingActionCreater = (isFetching) => {
+  return {
+    type: TOGGLE_IS_FETCHING,
+    isFetching
   }
 }
 
