@@ -1,10 +1,15 @@
 import React from 'react';
-// import classes from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+  if (!props.profile) {
+    return <span>No foto!!!</span> 
+  }
+  
   return (
     <div>
-      ava + description
+      <img src={props.profile.photos.small} alt="avatar" />
+      <p>{props.profile.fullName}</p>
     </div>
   )
 }

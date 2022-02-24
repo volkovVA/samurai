@@ -11,7 +11,6 @@ import {
   toggleIsFetching
 } from "../../redux/users-reducer";
 import FadeLoader from 'react-spinners/FadeLoader';
-// import preloader from '../../assets/preloader.gif'
 
 class UsersContainer extends Component {
   
