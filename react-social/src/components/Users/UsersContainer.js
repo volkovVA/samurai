@@ -9,6 +9,8 @@ import {
   getUsersThunkCreator,
 } from "../../redux/users-reducer";
 import FadeLoader from "react-spinners/FadeLoader";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends Component {
   componentDidMount() {
@@ -59,10 +61,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  toggleFollowingProgress,
-  getUsers: getUsersThunkCreator,
-})(UsersContainer);
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setCurrentPage,
+    toggleFollowingProgress,
+    getUsers: getUsersThunkCreator,
+  })
+)(UsersContainer);
