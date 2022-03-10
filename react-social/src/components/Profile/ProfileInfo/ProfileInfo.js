@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
-
   if (!props.profile) {
-    return <span>No foto!!!</span> 
+    return <span>No foto!!!</span>;
   }
-  
+
   return (
     <div>
       <img src={props.profile.photos.small} alt="avatar" />
       <p>{props.profile.fullName}</p>
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
     </div>
-  )
-}
+  );
+};
 
 export default ProfileInfo;
