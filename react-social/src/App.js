@@ -16,6 +16,9 @@ import Login from "./components/Login/Login";
 import { initializeApp } from "./redux/app-reducer";
 import FadeLoader from "react-spinners/FadeLoader";
 import { compose } from "redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "./redux/redux-store";
+import { Provider } from "react-redux";
 
 class App extends Component {
   componentDidMount() {
@@ -67,7 +70,21 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({ initialized: state.app.initialized });
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
+
+const MainApp = (props) => {
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+
+export default MainApp;
