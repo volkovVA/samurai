@@ -125,7 +125,7 @@ export const getUsersThunkCreator = (page, pageSize) => {
 
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
-    dispatch(setTotalUsersCount(data.totalCount - 17550));
+    dispatch(setTotalUsersCount(data.totalCount));
   };
 };
 
