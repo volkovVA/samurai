@@ -3,11 +3,8 @@ import { Route, withRouter } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import "./App.css";
-
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -19,6 +16,15 @@ import { compose } from "redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/redux-store";
 import { Provider } from "react-redux";
+import { withSuspense } from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
 
 class App extends Component {
   componentDidMount() {
@@ -53,9 +59,18 @@ class App extends Component {
           <Col sm={8} className="bg-warning">
             <Route
               path="/profile/:userId?"
-              render={() => <ProfileContainer />}
+              render={withSuspense(ProfileContainer)}
             />
-            <Route path="/dialogs" render={() => <DialogsContainer />} />
+            <Route
+              path="/dialogs"
+              render={() => {
+                return (
+                  <React.Suspense fallback={<div>Loading...</div>}>
+                    <DialogsContainer />
+                  </React.Suspense>
+                );
+              }}
+            />
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/login" render={() => <Login />} />
             <Route path="/news" component={News} />
@@ -75,7 +90,7 @@ const AppContainer = compose(
   connect(mapStateToProps, { initializeApp })
 )(App);
 
-const MainApp = (props) => {
+const MainApp = () => {
   return (
     <React.StrictMode>
       <BrowserRouter>
