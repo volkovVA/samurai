@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/799.252be4c6.chunk.css","mappings":"AAAA,wBACE,YACF,CCFA,0DACE,SACF","sources":["components/Dialogs/Dialogs.module.css","components/Dialogs/PersonItem/PersonItem.module.css"],"sourcesContent":[".dialogs {\r\n  display: flex;\r\n}",".personItem.active a {\r\n  color: red;\r\n}"],"names":[],"sourceRoot":""}
